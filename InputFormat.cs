@@ -8,46 +8,36 @@ namespace expense_tracker
 {
     internal class InputFormat
     {
-        int id;
-        string description;
-        double amount;
-        int month;
+        int id {  get; set; }
+        string description { get; set; }
+        double amount { get; set; }
+        int month { get; set; }
+        string catagory { get; set; }
         public InputFormat(string[] command)
         {
-           switch (command[0])
+            month = -1;
+           
+            for (int i = 0; i < command.Length - 1; i++)
             {
-                case "add":
-                    for (int i = 0; i < command.Length - 1; i++)
-                    {
-                        if(command[i] == "--description")
-                        {
-                            description = command[i + 1];
-                        }
-                        else if (command[i] == "--amount")
-                        {
-                            amount = double.Parse(command[i + 1]);
-                        }
-                    }
-                    break;
-                case "delete":
-                    if (command[1] == "--id")
-                    {
-                        id = int.Parse(command[2]);
-                    }
-                    break;
-                case "summary":
-                    if (command.Length>1 && command[1] == "--month")
-                    {
-                        month = int.Parse(command[2]);
-                    }
-                    else
-                    {
-                        month = -1;
-                    }
-                    break;
-                default:
-                    break;
+                if(command[i] == "--description")
+                {
+                    description = command[i + 1];
+                }
+                else if (command[i] == "--amount")
+                {
+                    amount = double.Parse(command[i + 1]);
+                }
+                else if(command[i] == "--id")
+                {
+                    id = int.Parse(command[2]);
+                }
+                else if(command[i] == "--month")
+                {
+                    month = int.Parse(command[2]);
+                }
+                else if( command[i] ==)
             }
+                    
         }
     }
     
